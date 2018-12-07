@@ -24,6 +24,15 @@
 </body>
 
 <script>
+googletag.cmd.push(() => {
+  googletag.pubads().disableInitialLoad();
+  googletag.pubads().enableSingleRequest();
+  googletag.pubads().collapseEmptyDivs();
+  googletag.pubads().enableAsyncRendering();
+  googletag.enableServices();
+  googletag.openConsole();
+});
+  
 var g_timer;
 var g_stopped;
 document.getElementsByClassName('btn-stop')[0].addEventListener('click', ()=> {
@@ -36,6 +45,7 @@ document.getElementsByClassName('btn-start')[0].addEventListener('click', ()=> {
   g_stopped = false;
   restartTest();
 });
+  
 function createTestDiv () {
     const div = document.createElement('div');
     div.id = 'test_div';
@@ -58,9 +68,9 @@ function restartTest () {
             ],
             'test_div'
         );
-        googletag.pubads().disableInitialLoad();
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().enableLazyLoad();
+        //googletag.pubads().disableInitialLoad();
+        //googletag.pubads().enableSingleRequest();
+        //googletag.pubads().enableLazyLoad();
         slot.addService(googletag.pubads());
         // googletag.pubads().refresh([slot])
         setTimeout(() => {
